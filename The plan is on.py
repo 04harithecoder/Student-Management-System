@@ -11,7 +11,7 @@ crsr = mydb.cursor()
 crsr.execute("""CREATE DATABASE IF NOT EXISTS School_mgmt_system""")
 crsr.execute("""USE School_mgmt_system""")
 
-# CREATING TABLES
+
 crsr.execute("""CREATE TABLE IF NOT EXISTS Student
 (rollno integer primary key, name varchar(25),
 age integer, class varchar(10), city varchar(20))""")
@@ -19,7 +19,7 @@ age integer, class varchar(10), city varchar(20))""")
 crsr.execute("""CREATE TABLE IF NOT EXISTS Fees
 (rollno integer, feedeposit integer, term varchar(3))""")
 
-# Function to Insert a student's details
+
 def stuInsert():
     crsr.execute("""SELECT rollno FROM Student""")
     print(*crsr, sep="\n")
@@ -39,7 +39,7 @@ def stuInsert():
     crsr.execute(sql, stud)
     mydb.commit()
 
-# Function to View a student's details
+
 def stuView():
     print("Select the search criteria : ")
     print("1. Rollnumber")
@@ -84,7 +84,7 @@ def stuView():
         for x in res:
             print(x)
 
-# Function to pay the Term fees
+
 def feeDeposit():
     L = []
     roll = int(input("Enter the Roll number: "))
@@ -98,7 +98,7 @@ def feeDeposit():
     crsr.execute(sql, fee)
     mydb.commit()
 
-# Function to view the Fees paid details of a student
+
 def feeView():
     print("Please enter the details to view the fee details:")
     roll = int(input("Enter the Roll number of the student whose fee is to be viewed: "))
@@ -112,7 +112,7 @@ def feeView():
     for x in res:
         print(x)
 
-# Function to Remove a student's details
+
 def removeStu():
     roll = int(input("Enter the Roll number of the student to be deleted: "))
     rl = (roll,)
@@ -122,7 +122,7 @@ def removeStu():
     crsr.execute(sql, rl)
     mydb.commit()
 
-# Main Menu function
+
 def MenuSet():
     print("Enter 1 : To Add Student")
     print("Enter 2 : To View Student")
@@ -153,7 +153,7 @@ def MenuSet():
 
 MenuSet()
 
-# Function to continue again
+
 def runAgain():
     runAgn = input("\nWant To Run Again Y / N: ")
     while(runAgn.lower() == 'y'):
@@ -161,3 +161,4 @@ def runAgain():
         runAgn = input("\nWant To Run Again Y / N: ")
 
 runAgain()
+
